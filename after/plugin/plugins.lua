@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local packer = require('packer')
 
 return packer.startup({function(use)
@@ -8,10 +7,11 @@ return packer.startup({function(use)
 
     -- Colorscheme
     use 'folke/tokyonight.nvim'
-    cmd [[colorscheme tokyonight-moon]]
 
     -- Treesitter
     use 'nvim-treesitter/nvim-treesitter'
+    -- AutoPairs
+    use 'windwp/nvim-autopairs'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
