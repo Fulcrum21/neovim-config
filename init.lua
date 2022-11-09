@@ -1,30 +1,21 @@
 -- Aliases
 local g = vim.g
 local cmd = vim.cmd
-local autocmd = vim.api.nvim_create_autocmd
 
-
--- the leader key
 g.mapleader = ' '
 
--- Autocommands
-autocmd({ "VimEnter", "VimResume" }, {
-    pattern = "*",
-    desc= "sets the cursor to use in neovim",
-    command = "set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
-})
+local impatient_ok, impatient = pcall(require, "impatient")
+if impatient_ok then impatient.enable_profile() end
 
-autocmd({ "VimLeave", "VimSuspend" }, {
-    pattern = "*",
-    desc= "resets the cursor to its original shape in term",
-    command = "set guicursor=a:hor20-blinkon250-blinkwait700-blinkoff400"
-})
-
-autocmd({"BufNewFile", "BufWinEnter"}, {
-    pattern = "*",
-    desc = "sets formatopts properly",
-    command = "setlocal formatoptions-=cro"
-})
+for _, source in ipairs {
+    "plugins",
+    "options",
+    "autocmd",
+    "keymaps",
+} do
+  local status_ok, fault = pcall(require, source)
+  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
+end
 
 -- Colorscheme
 cmd[[ colorscheme tokyonight-moon]]
