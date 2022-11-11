@@ -1,48 +1,57 @@
-local packer = require('packer')
+local packer = require'packer'
 
-return packer.startup({function(use)
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
+
+
+
+packer.init {
+    display = {
+        open_fn = function()
+            return require("packer.util").float {border = "rounded"}
+        end,
+    },
+}
+
+return packer.startup(function(use)
 
     -- Packer itself
     use 'wbthomason/packer.nvim'
-    -- Optimizer
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-lua/popup.nvim'
+
     use 'lewis6991/impatient.nvim'
 
     -- Colorscheme
     use 'folke/tokyonight.nvim'
 
     -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        config = [[require "configs.nvim-treesitter"]]
-        }
+    use 'nvim-treesitter/nvim-treesitter'
     -- AutoPairs
-    use {
-        'windwp/nvim-autopairs',
-        config = [[require "configs.autopairs"]]
-        }
+    use 'windwp/nvim-autopairs'
+
+    use 'williamboman/mason.nvim'
+
+    use 'williamboman/mason-lspconfig.nvim'
 
     -- LSP
-    use {
-        'neovim/nvim-lspconfig',
-        config = [[require "configs.nvim-lsp"]]     
-        }
+    use 'neovim/nvim-lspconfig'
 
-    use {
-        'williamboman/mason.nvim',
-        config = [[require "configs.mason"]]
-        }
 
-    use {
-        'williamboman/mason-lspconfig.nvim',
-        after = {'nvim-lspconfig', 'mason.nvim'},
-        config = [[require "configs.mason-lsp"]]
-        }
-end,
-
-config = {
-  display = {
-      open_fn = function()
-          return require('packer.util').float({border = 'single'})
-      end
-  }
-}})
+    -- Completion
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    -- snippets enginge
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    -- snippets collection
+    use "rafamadriz/friendly-snippets"
+end
+)

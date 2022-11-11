@@ -1,6 +1,14 @@
 local lspconf = require'lspconfig'
---lsp
+local keymap = vim.keymap.set
+
+local on_attach = function(client, bufnr)
+   keymap('n', '<leader>ld', function() vim.diagnostic.open_float() end)
+end
+
+
+
 lspconf.ccls.setup{ -- ccls
+    on_attach = on_attach,
     init_options = {
         cache = { directory = "/tmp/ccls-cache"};
         clang = {
@@ -11,6 +19,7 @@ lspconf.ccls.setup{ -- ccls
 }
 lspconf.sumneko_lua.setup { -- sumneko_lua
 
+    on_attach = on_attach,
     settings = {
     Lua = {
       runtime = {

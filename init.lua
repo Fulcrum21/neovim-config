@@ -1,21 +1,31 @@
--- Aliases
-local g = vim.g
-local cmd = vim.cmd
-
-g.mapleader = ' '
-
-local impatient_ok, impatient = pcall(require, "impatient")
-if impatient_ok then impatient.enable_profile() end
+local impatient_status, impatient = pcall(require, 'impatient')
+if not impatient_status then
+    return
+end
+impatient.enable_profile()
 
 for _, source in ipairs {
-    "plugins",
     "options",
-    "autocmd",
     "keymaps",
+    "plugins",
+    "configs.cmp",
+    "configs.mason",
+    "configs.mason-lsp",
+    "configs.nvim-lsp",
+    "configs.nvim-treesitter",
+    "configs.autopairs",
+    "autocmd",
 } do
   local status_ok, fault = pcall(require, source)
   if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
 end
 
 -- Colorscheme
-cmd[[ colorscheme tokyonight-moon]]
+local colorscheme = "tokyonight-storm"
+
+local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+if not status_ok then
+    vim.notify("colorscheme " .. colorscheme .. " not found")
+    return
+end
+

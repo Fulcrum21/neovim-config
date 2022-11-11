@@ -1,13 +1,36 @@
-local keymap = vim.keymap
+local keymap = vim.api.nvim_set_keymap
+local opts = {noremap = true, silent = true}
 
+-- Leader key
+keymap("n", '<Space>', '<Nop>', opts)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 -- General
-keymap.set('i', 'jj', '<ESC>')
-keymap.set('i', 'jk', '<ESC>')
-keymap.set('i', 'jh', '<ESC>')
-keymap.set('n', '<leader>q', ':q!<CR>')
-keymap.set('n', '<leader>h', ':nohl<CR>')
-keymap.set('n', '<leader>w', ':w<CR>')
-keymap.set('n', '<leader>ft', ':!st -d %:h > /dev/null & disown<CR><CR>')
+keymap('i', 'jk', '<ESC>', opts)
+keymap('i', 'jj', '<ESC>', opts)
+keymap('n', '<leader>q', ':q!<CR>', opts)
+keymap('n', '<leader>h', ':nohl<CR>', opts)
+keymap('n', '<leader>w', ':w<CR>', opts)
+keymap('n', '<leader>ft', ':!st -d %:h 2> /dev/null & disown<CR><CR>', opts)
+keymap('v', '<Space><Space>', '<Esc>', opts)
 
+-- Indentation
+keymap('v', '<', '<gv', opts)
+keymap('v', '>', '>gv', opts)
 
--- LSP
+-- Buffer movement
+keymap('n', '<C-h>', '<C-w>h', opts)
+keymap('n', '<C-j>', '<C-w>j', opts)
+keymap('n', '<C-k>', '<C-w>k', opts)
+keymap('n', '<C-l>', '<C-w>l', opts)
+-- Move text up and down
+keymap("v", "<A-j>", ":m .+1<CR>==", opts)
+keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "p", '"_dP', opts)
+
+-- Visual Block --
+-- Move text up and down
+keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
