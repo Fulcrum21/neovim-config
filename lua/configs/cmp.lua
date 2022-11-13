@@ -48,6 +48,12 @@ cmp.setup(
             require('luasnip').lsp_expand(args.body)
         end,
     },
+    preselect = cmp.PreselectMode.None,
+
+    confirm_opts = {
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+    },
 
     window = {
         completion = cmp.config.window.bordered(border_opts),
@@ -56,7 +62,7 @@ cmp.setup(
 
     mapping = cmp.mapping.preset.insert(
     {
-        ['<CR>'] = cmp.mapping.confirm({select = true}),
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
         ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -107,6 +113,7 @@ cmp.setup(
 		end,
     },
     sources = cmp.config.sources({
+        { name = 'nvim_lsp'},
         { name = 'luasnip'},
     },
     {

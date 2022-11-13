@@ -1,6 +1,7 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
 
+
 -- Leader key
 keymap("n", '<Space>', '<Nop>', opts)
 vim.g.mapleader = ' '
@@ -11,8 +12,9 @@ keymap('i', 'jj', '<ESC>', opts)
 keymap('n', '<leader>q', ':q!<CR>', opts)
 keymap('n', '<leader>h', ':nohl<CR>', opts)
 keymap('n', '<leader>w', ':w<CR>', opts)
-keymap('n', '<leader>ft', ':!st -d %:h 2> /dev/null & disown<CR><CR>', opts)
-keymap('v', '<Space><Space>', '<Esc>', opts)
+keymap('n', '<leader>c', ':c<CR>', opts)
+keymap('n', '<leader>ft', ':!st -d %:h 2> /dev/null & disown<CR><CR>', opts) -- open terminal in another window
+keymap('v', '<Space><Space>', '<Esc>', opts) -- exit visual mode with two spaces
 
 -- Indentation
 keymap('v', '<', '<gv', opts)
