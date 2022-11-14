@@ -9,8 +9,6 @@ for _, source in ipairs {
     "keymaps",
     "plugins",
     "configs.cmp",
-    "configs.mason",
-    "configs.mason-lsp",
     "configs.lsp",
     --"configs.nvim-lsp",
     "configs.nvim-treesitter",

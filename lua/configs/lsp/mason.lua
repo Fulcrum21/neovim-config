@@ -29,7 +29,7 @@ for _, server in pairs(servers) do
         capabilities = require("configs.lsp.handlers").capabilities,
     }
 
-    local serverconf_ok, conf_opts = pcall(require, "configs.lsp.server-settings" .. server)
+    local serverconf_ok, conf_opts = pcall(require, "configs.lsp.server-settings." .. server)
 
     if serverconf_ok then
         opts = vim.tbl_deep_extend("force", conf_opts, opts)
