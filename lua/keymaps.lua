@@ -3,16 +3,13 @@ local opts = {noremap = true, silent = true}
 
 
 -- Leader key
-keymap("n", '<Space>', '<Nop>', opts)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 -- General
 keymap('i', 'jk', '<ESC>', opts)
 keymap('i', 'jj', '<ESC>', opts)
 keymap('n', '<leader>q', ':q!<CR>', opts)
 keymap('n', '<leader>h', ':nohl<CR>', opts)
 keymap('n', '<leader>w', ':w<CR>', opts)
-keymap('n', '<leader>c', ':c<CR>', opts)
+keymap('n', '<leader>c', ':close<CR>', opts)
 keymap('n', '<leader>ft', ':!st -d %:h 2> /dev/null & disown<CR><CR>', opts) -- open terminal in another window
 keymap('v', '<Space><Space>', '<Esc>', opts) -- exit visual mode with two spaces
 

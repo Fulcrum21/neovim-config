@@ -21,7 +21,9 @@ M.setup = function()
     end
 
     local config = {
-        virtual_text = false,
+        virtual_text = {
+            severity = { min = vim.diagnostic.severity.WARN,},
+        },
         signs = { active = signs,},
         update_in_insert = true,
         underline = true,

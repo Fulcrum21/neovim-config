@@ -1,6 +1,5 @@
 local packer = require'packer'
 
-
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
   augroup packer_user_config
@@ -28,8 +27,9 @@ return packer.startup(function(use)
 
     use 'lewis6991/impatient.nvim'
 
-    -- Colorscheme
+    -- Colorschemes
     use 'folke/tokyonight.nvim'
+    use { 'catppuccin/nvim', as = "catppuccin"}
 
     -- Treesitter
     use 'nvim-treesitter/nvim-treesitter'
