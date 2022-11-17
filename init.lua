@@ -14,7 +14,6 @@ for _, source in ipairs {
     "plugins",
     "configs.cmp",
     "configs.lsp",
-    --"configs.nvim-lsp",
     "configs.nvim-treesitter",
     "configs.autopairs",
     "configs.colorscheme",

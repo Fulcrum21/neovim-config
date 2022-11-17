@@ -22,9 +22,11 @@ return packer.startup(function(use)
 
     -- Packer itself
     use 'wbthomason/packer.nvim'
+    -- Some lua functions for plugins
     use 'nvim-lua/plenary.nvim'
+    -- a popup api
     use 'nvim-lua/popup.nvim'
-
+    -- optimizer
     use 'lewis6991/impatient.nvim'
 
     -- Colorschemes
@@ -36,13 +38,8 @@ return packer.startup(function(use)
     -- AutoPairs
     use 'windwp/nvim-autopairs'
 
-    use 'williamboman/mason.nvim'
-
-    use 'williamboman/mason-lspconfig.nvim'
-
     -- LSP
     use 'neovim/nvim-lspconfig'
-
 
     -- Completion
     use 'hrsh7th/nvim-cmp'
@@ -54,5 +51,10 @@ return packer.startup(function(use)
     use 'saadparwaiz1/cmp_luasnip'
     -- snippets collection
     use "rafamadriz/friendly-snippets"
+
+    -- Devicons
+    use 'nvim-tree/nvim-web-devicons'
+    -- Lua config in neovim
+    use 'folke/neodev.nvim'
 end
 )

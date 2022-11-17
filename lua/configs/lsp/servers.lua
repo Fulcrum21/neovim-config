@@ -1,25 +1,14 @@
--- list of lsp servers that can be installed using Mason.nvim
 local servers = {
-    'sumneko_lua'
+    'sumneko_lua',
+    'ccls'
 }
 
 
-
--- setup mason and mason-lspconfig, and ensure that the above table of lsp servers are installed
-require("mason").setup()
-require("mason-lspconfig").setup(
-    {
-        ensure_installed = servers,
-        automatic_installation = true,
-    })
 
 local lspconfig_status, lspconfig = pcall(require,'lspconfig')
 if not lspconfig_status then
     return
 end
-
--- insert the ccls lsp server in the table above, since it cannot be installed through mason.nvim (i installed this with my package manager)
-table.insert(servers, "ccls")
 
 local opts = {}
 
