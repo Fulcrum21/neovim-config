@@ -8,7 +8,10 @@ return {
             globals = { 'vim',},
           },
           workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
+              library = {
+                  vim.fn.expand "$VIMRUNTIME/lua",
+                  vim.fn.expand "$HOME/.config/nvim/lua",
+              },
           },
           telemetry = {
             enable = false,

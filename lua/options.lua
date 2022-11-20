@@ -1,41 +1,48 @@
-local opt = vim.opt
+-- VARIABLES --
+local options = {
+    opt = {
+        cmdheight = 0,
+        number = true,
+        syntax= '',
+        relativenumber = true,
+        clipboard = "unnamedplus",
+        updatetime = 300,
+        undofile = true,
+        splitbelow = true,
+        splitright = true,
+        completeopt = {"menuone", "noselect"},
+        laststatus = 3,
+        pumheight = 10,
+        scrolloff = 8,
+        shortmess = vim.opt.shortmess + {s = true, I = true},
+        sidescrolloff = 8,
+        timeoutlen = 300,
+        preserveindent = true,
+        smartindent = true,
+        mouse = "a",
+        lazyredraw = true,
+        copyindent = true,
+        numberwidth = 2,
+        shiftwidth = 4,
+        tabstop = 4,
+        softtabstop = 4,
+        expandtab = true,
+        formatoptions = "jql",
+        signcolumn = "yes",
+        termguicolors = true,
+        backupdir = "/tmp",
+        backup = true,
+        writebackup = false,
+        swapfile = false,
+        cursorline = true,
+        ignorecase = true,
+        smartcase = true,
+    },
 
--- Options
-opt.cmdheight = 0
-opt.number = true
-opt.syntax= ''
-opt.relativenumber = true
-opt.clipboard = "unnamedplus"
-opt.updatetime = 300
-opt.undofile = true
-opt.splitbelow = true
-opt.splitright = true
-opt.completeopt = {"menu", "menuone", "noselect"}
+}
 
-opt.timeoutlen = 1000 -- the amount of time to wait for a 
-                     -- mapping sequence
-opt.preserveindent = true -- preserve the indentation 
-opt.smartindent = true
-                          -- as much as possible
-opt.mouse = "a"
-opt.lazyredraw = true -- lazily redraw the screen
-opt.copyindent = true -- copy the indentation from the
-                      -- previous line
-opt.numberwidth = 2
-opt.shiftwidth = 4 -- sets tab to 4 spaces
-opt.tabstop = 4 -- sets tabstops every 4 characters
-opt.softtabstop = 4 -- same as shiftwidth
-opt.expandtab = true -- replaces tabs with spaces
-opt.formatoptions = "jql" -- idk what this does lmaoo
-opt.signcolumn = "yes" -- always show the sign column
-opt.autochdir = true
-opt.termguicolors = true
--- files are backuped in /tmp
-opt.backupdir = "/tmp"
-opt.backup = true
-
-opt.cursorline = true -- highlights the line we are on
-
--- case insensitive, unless we search for a capital letter
-opt.ignorecase = true
-opt.smartcase = true
+for scope, opt_table in pairs(options) do
+    for option, value in pairs(opt_table) do
+	    vim[scope][option] = value
+    end
+end

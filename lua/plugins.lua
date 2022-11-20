@@ -30,11 +30,11 @@ return packer.startup(function(use)
     use 'lewis6991/impatient.nvim'
 
     -- Colorschemes
-    use 'folke/tokyonight.nvim'
     use { 'catppuccin/nvim', as = "catppuccin"}
 
     -- Treesitter
     use 'nvim-treesitter/nvim-treesitter'
+    use 'p00f/nvim-ts-rainbow' -- Colored parantheses in treesitter
     -- AutoPairs
     use 'windwp/nvim-autopairs'
 
@@ -52,9 +52,12 @@ return packer.startup(function(use)
     -- snippets collection
     use "rafamadriz/friendly-snippets"
 
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0'}
+
     -- Devicons
     use 'nvim-tree/nvim-web-devicons'
-    -- Lua config in neovim
-    use 'folke/neodev.nvim'
+
+    -- Comments
+    use 'numToStr/Comment.nvim'
 end
 )

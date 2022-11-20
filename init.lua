@@ -9,18 +9,18 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 for _, source in ipairs {
-    "options",
-    "keymaps",
     "plugins",
     "configs.cmp",
     "configs.lsp",
     "configs.nvim-treesitter",
     "configs.autopairs",
     "configs.colorscheme",
+    "configs.telescope",
+    "configs.comment",
+    "options",
     "autocmd",
+    "keymaps",
 } do
   local status_ok, fault = pcall(require, source)
   if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
 end
-
-

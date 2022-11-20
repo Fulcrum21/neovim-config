@@ -10,7 +10,7 @@ keymap('n', '<leader>q', ':q!<CR>', opts)
 keymap('n', '<leader>h', ':nohl<CR>', opts)
 keymap('n', '<leader>w', ':w<CR>', opts)
 keymap('n', '<leader>c', ':close<CR>', opts)
-keymap('n', '<leader>ft', ':!st -d %:h 2> /dev/null & disown<CR><CR>', opts) -- open terminal in another window
+keymap('n', '<leader>ft', ':!alacritty --working-directory . 2> /dev/null & disown<CR><CR>', opts) -- open terminal in another window
 keymap('v', '<Space><Space>', '<Esc>', opts) -- exit visual mode with two spaces
 
 -- Indentation
@@ -33,3 +33,11 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
+-- Telescope
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>fw", ":Telescope live_grep<CR>", opts)
+
+-- Commenting
+keymap("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+keymap("v", "<leader>/", "<Esc>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)

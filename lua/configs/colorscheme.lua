@@ -11,6 +11,7 @@ if string.find(colorscheme, "catppuccin") then
             cmp = true,
             mason = true,
             treesitter = true,
+            ts_rainbow = true,
         },
 
         native_lsp = {
