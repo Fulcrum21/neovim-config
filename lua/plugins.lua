@@ -59,5 +59,8 @@ return packer.startup(function(use)
 
     -- Comments
     use 'numToStr/Comment.nvim'
+
+    -- Git integration
+    use 'lewis6991/gitsigns.nvim'
 end
 )

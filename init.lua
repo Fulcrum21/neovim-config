@@ -17,6 +17,7 @@ for _, source in ipairs {
     "configs.colorscheme",
     "configs.telescope",
     "configs.comment",
+    "configs.gitsigns",
     "options",
     "autocmd",
     "keymaps",
