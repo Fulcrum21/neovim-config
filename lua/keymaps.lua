@@ -12,7 +12,8 @@ maps.n['<leader>q'] = { ':q!<CR>', desc = "Force Quit"}
 maps.n['<leader>w'] = { ':w!<CR>', desc = "Save File"}
 maps.n['<leader>h'] = { ':nohl<CR>', desc = "Removes search highlighting"}
 maps.n['<leader>c'] = { ':close<CR>', desc = "Closes buffer"}
-maps.n['<leader>ft'] = { ':!prime-run alacritty msg create-window --working-directory . & disown<CR><CR>', desc = "Opens new terminal"}
+maps.n['<leader>ft'] = { ':!alacritty msg create-window --working-directory $(pwd) & disown<CR><CR>', desc = "Opens new terminal"}
+maps.n['<leader>fc'] = { ':cd %:h<CR>', desc = "Changes cwd to the file's cwd"}
 maps.v['<Space><Space>'] = { '<Esc>', desc = "Exits visual mode"}
 
 -- Indentation
@@ -38,6 +39,21 @@ maps.n["<leader>fw"] = {":Telescope live_grep<CR>", desc = "Find Word" }
 -- Commenting
 maps.n["<leader>/"] = {":lua require('Comment.api').toggle.linewise.current()<CR>", desc = "Comment line" }
 maps.v["<leader>/"] = {"<Esc>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", desc = "Comment selected lines" }
+
+-- Gitsigns
+maps.n["<leader>gj"] = { function() require("gitsigns").next_hunk() end, desc = "Next git hunk" }
+maps.n["<leader>gk"] = { function() require("gitsigns").prev_hunk() end, desc = "Previous git hunk" }
+maps.n["<leader>gl"] = { function() require("gitsigns").blame_line() end, desc = "View git blame" }
+maps.n["<leader>gp"] = { function() require("gitsigns").preview_hunk() end, desc = "Preview git hunk" }
+maps.n["<leader>gh"] = { function() require("gitsigns").reset_hunk() end, desc = "Reset git hunk" }
+maps.n["<leader>gr"] = { function() require("gitsigns").reset_buffer() end, desc = "Reset git buffer" }
+maps.n["<leader>gs"] = { function() require("gitsigns").stage_hunk() end, desc = "Stage git hunk" }
+maps.n["<leader>gu"] = { function() require("gitsigns").undo_stage_hunk() end, desc = "Unstage git hunk" }
+maps.n["<leader>gd"] = { function() require("gitsigns").diffthis() end, desc = "View git diff" }
+
+-- Neotree
+maps.n["<leader>e"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" }
+maps.n["<leader>o"] = { "<cmd>Neotree focus<cr>", desc = "Focus Explorer" }
 
 
 for mode, mappings in pairs(maps) do

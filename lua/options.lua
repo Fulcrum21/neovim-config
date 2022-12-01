@@ -3,7 +3,6 @@ local options = {
     opt = {
         cmdheight = 0,
         number = true,
-        syntax= '',
         relativenumber = true,
         clipboard = "unnamedplus",
         updatetime = 300,

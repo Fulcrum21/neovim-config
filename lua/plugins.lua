@@ -62,5 +62,12 @@ return packer.startup(function(use)
 
     -- Git integration
     use 'lewis6991/gitsigns.nvim'
+
+    -- Filesystem Tree
+    use 'MunifTanjim/nui.nvim'
+    use {
+        'nvim-neo-tree/neo-tree.nvim',
+        branch = "v2.x",
+        }
 end
 )

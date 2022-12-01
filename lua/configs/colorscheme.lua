@@ -1,15 +1,23 @@
-local colorscheme = "catppuccin-macchiato"
+-- Colorscheme plugins: Catppuccin/nvim , marko-cerovac/material.nvim
 
-if string.find(colorscheme, "catppuccin") then
-    local status, colorconf = pcall(require, "catppuccin")
-    if not status then
-        return
-    end
+-- Catppuccin colors: Mocha*, Macchiato, Frappe, Latte
+-- https://github.com/catppuccin/nvim
 
-    colorconf.setup({
+-- material colors: darker, lighter, oceanic, palenight*, deep ocean
+-- https://github.com/marko-cerovac/material.nvim
+
+
+
+
+
+local colorscheme = "catppuccin"
+
+if colorscheme == "catppuccin" then
+    require("catppuccin").setup({
+        flavour = "mocha",
+
         integrations = {
             cmp = true,
-            mason = true,
             treesitter = true,
             ts_rainbow = true,
         },
@@ -34,6 +42,23 @@ if string.find(colorscheme, "catppuccin") then
         },
     })
 
+end
+
+if colorscheme == 'material' then
+    require('material').setup {
+
+        contrast = {
+            cursor_line = true,
+        },
+
+        plugins = {
+            "gitsigns",
+            "nvim-cmp",
+            "telescope",
+        }
+    }
+
+    vim.g.material_style = "palenight"
 end
 
 vim.cmd("colorscheme " .. colorscheme)
